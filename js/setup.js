@@ -1,6 +1,6 @@
 'use strict';
 
-var wizardNames = [
+var WIZARD_NAMES = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -11,7 +11,7 @@ var wizardNames = [
   'Вашингтон'
 ];
 
-var wizardSurnames = [
+var WIZARD_SURNAMES = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -22,7 +22,7 @@ var wizardSurnames = [
   'Ирвинг'
 ];
 
-var coatColors = [
+var COAT_COLORS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -31,7 +31,7 @@ var coatColors = [
   'rgb(0, 0, 0)'
 ];
 
-var wizardEyesColors = [
+var WIZARD_EYES = [
   'black',
   'red',
   'blue',
@@ -39,10 +39,14 @@ var wizardEyesColors = [
   'green'
 ];
 
-var wizardNumbers = 4;
+var WIZARD_NUMBERS = 4;
 
 var profileButton = document.querySelector('.setup-open');
 var setupPopUp = document.querySelector('.setup');
+var similarListElement = document.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+    .content
+    .querySelector('.setup-similar-item');
 
 // показывает блок с настройками
 profileButton.addEventListener('click', function () {
@@ -73,11 +77,6 @@ var createWizards = function (number, name, surname, coat, eyes) {
 // работаем с блоком похожих волшебников
 document.querySelector('.setup-similar').classList.remove('hidden');
 
-var similarListElement = document.querySelector('.setup-similar-list');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-    .content
-    .querySelector('.setup-similar-item');
-
 // генерируем элемент с волшебником
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -100,4 +99,4 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
-renderSimilarWizards(createWizards(wizardNumbers, wizardNames, wizardSurnames, coatColors, wizardEyesColors));
+renderSimilarWizards(createWizards(WIZARD_NUMBERS, WIZARD_NAMES, WIZARD_SURNAMES, COAT_COLORS, WIZARD_EYES));
